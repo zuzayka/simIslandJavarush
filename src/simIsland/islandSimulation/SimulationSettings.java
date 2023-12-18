@@ -1,11 +1,9 @@
 package simIsland.islandSimulation;
 
+import dialogs.SimulationDialog;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.Properties;
+import simIsland.immutableParameters.IslandProperties;
 
 @Getter
 @Setter
@@ -13,24 +11,16 @@ public class SimulationSettings {
     private int widthChart;
     private int heightChart;
     private int simulationCycles;
+    private int entityDensity;
+    private double saturationReduce;
+    private SimulationDialog dialog;
 
-
-    {
-        Properties property = new Properties();
-        FileInputStream fis;
-        try {
-            fis = new FileInputStream("/home/miux/Java/javarush/simIslandJavarush/config/sim.property");
-            property.load(fis);
-            widthChart = Integer.parseInt(property.getProperty("island_width"));
-            heightChart = Integer.parseInt(property.getProperty("island_height"));
-            simulationCycles = Integer.parseInt(property.getProperty("island_cycles"));
-        } catch (IOException e) {
-            System.err.println("ОШИБКА: Файл свойств отсуствует!");
-        }
-    }
-
-    public static void main(String[] args) {
-        SimulationSettings settings = new SimulationSettings();
-        System.out.println(settings.widthChart + ":" + settings.heightChart);
+    public SimulationSettings() {
+        this.dialog = new SimulationDialog();
+        this.widthChart = dialog.getScannerWidth();
+        this.heightChart = dialog.getScannerHeight();
+        this.simulationCycles = dialog.getScannerCycles();
+        this.entityDensity = dialog.getScannerDensity();
+        this.saturationReduce = IslandProperties.SATURATION_REDUCE;
     }
 }

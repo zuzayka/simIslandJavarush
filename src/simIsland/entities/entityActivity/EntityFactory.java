@@ -1,7 +1,7 @@
 package simIsland.entities.entityActivity;
 
-import simIsland.entities.entityTale.*;
-import simIsland.entities.utility.EntityType;
+import simIsland.entities.entityListing.*;
+import simIsland.immutableParameters.EntityType;
 
 
 public class EntityFactory {
@@ -14,6 +14,7 @@ public class EntityFactory {
             case DEER -> new Deer();
             case DUCK -> new Duck();
             case EAGLE -> new Eagle();
+            case FOX -> new Fox();
             case GOAT -> new Goat();
             case HORSE -> new Horse();
             case MOUSE -> new Mouse();
@@ -23,6 +24,5 @@ public class EntityFactory {
             case WOLF -> new Wolf();
             case GRASS -> new Grass();
         };
-//        return null;
     }
 }
