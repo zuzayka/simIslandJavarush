@@ -7,5 +7,6 @@ public enum Action {
     MOVE,
     EAT,
     REPRODUCE,
-    TERMINATE
+    TERMINATE,
+    CHANGE_FIELDS
 }
